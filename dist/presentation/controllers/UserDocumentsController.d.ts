@@ -5,19 +5,7 @@ import { GetUserVM } from "presentation/view-models/users/GetUserVM";
 export declare class UserDocumentsController {
     private readonly userDocumentsUsecase;
     constructor(userDocumentsUsecase: UserDocumentsUsecase);
-    addUserDocuments(userDocuments: UserDocumentsModels): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    addPolisDms(userPolis: PolisVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    getDocs(user: GetUserVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
+    addUserDocuments(userDocuments: UserDocumentsModels): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    addPolisDms(userPolis: PolisVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    getDocs(user: GetUserVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
 }

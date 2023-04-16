@@ -13,12 +13,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDocumentsUsecase = void 0;
 const common_1 = require("@nestjs/common");
 const IUserDocumentsRepository_1 = require("../ports/IUserDocumentsRepository");
-const ServiceResponse_1 = require("../../infrastructure/utils/ServiceResponse");
+const serviceResponse_1 = require("../../infrastructure/utils/serviceResponse");
 let UserDocumentsUsecase = UserDocumentsUsecase_1 = class UserDocumentsUsecase {
     constructor(userDocumentsRepo) {
         this.userDocumentsRepo = userDocumentsRepo;
         this.logger = new common_1.Logger(UserDocumentsUsecase_1.name);
-        this.serviceRes = new ServiceResponse_1.ServiceResponse();
+        this.serviceRes = new serviceResponse_1.ServiceResponse();
     }
     async addUserDocuments(doc) {
         const checkDoc = await this.userDocumentsRepo.checkUserDocument(doc);

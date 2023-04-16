@@ -12,6 +12,7 @@ import { ChangePasswordModel } from 'domain/models/ChangePasswordModel';
 
 import { HttpService } from '@nestjs/axios';
 import { List } from 'lodash';
+import { TGetUser, TGetUserByEmail, TGetUserIdByEmail, TSign } from 'infrastructure/types/TUser';
 
 @Injectable()
 export class UsersRepository
@@ -26,18 +27,17 @@ export class UsersRepository
     super(connection, UserEntity);
     this.connection = connection;
   }
-  async getUser(entity: User): Promise<any> {
+  async getUser(entity: User){
     const result = await this.connection.query(
       `SELECT id,email,password FROM users WHERE email='${entity.email}';`,
     );
-    console.log(result);
     if (result.length == 0) {
       return null;
     }
     return result[0];
   }
 
-  async signUser(entity: User) {
+  async signUser(entity: User){
     const result = await this.connection.query(`INSERT INTO users(
       first_name,
       last_name,
@@ -50,7 +50,7 @@ export class UsersRepository
   }
 
 
-  async getUserByEmail(entity: GetUserModel) {
+  async getUserByEmail(entity: GetUserModel): Promise<TGetUserByEmail> {
     const result = await this.connection.query(
       `SELECT first_name,last_name,email FROM users WHERE email='${entity.email}';`,
     );
@@ -71,7 +71,7 @@ export class UsersRepository
 
 
 
-  async getUserIdByEmail(entity: User) {
+  async getUserIdByEmail(entity: User): Promise<TGetUserIdByEmail> {
     const result = await this.connection.query(
       `SELECT id FROM users WHERE email='${entity.email}';`,
     );

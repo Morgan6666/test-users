@@ -1,3 +1,4 @@
+import { TServiceRes, TServiceResWithoutContent } from 'infrastructure/types/TServiceRes';
 import {
   USER_DOESNT_EXIST,
   USER_ALREADY_EXIST,
@@ -21,7 +22,7 @@ import { CODE_403, CODE_500, CODE_404 } from './messageConstants';
 import { SUCCESS_FALSE, SUCCESS_TRUE} from './messageConstants';
 
 export class ServiceResponse {
-  uniqueServiceErrorRes(success: boolean, code: number, message: string) {
+  uniqueServiceErrorRes(success: boolean, code: number, message: string): TServiceResWithoutContent {
     return {
       Success: success,
       Message: message,
@@ -34,7 +35,7 @@ export class ServiceResponse {
     code: number,
     message: string,
     content: object,
-  ) {
+  ): TServiceRes {
     return {
       Success: success,
       Message: message,
@@ -43,18 +44,18 @@ export class ServiceResponse {
     };
   }
 
-  uniqueSuccessRes(content: Object) {
+  uniqueSuccessRes(content: Object): TServiceRes {
     return this.uniqueServiceRes(SUCCESS_TRUE, CODE_200, SUCCESS, content);
   }
 
-  userSessionNotFound() {
+  userSessionNotFound(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_404,
       USER_SESSION_NOT_FOUND,
     );
   }
-  usersSessionSuccessDelete() {
+  usersSessionSuccessDelete(): TServiceRes {
     return this.uniqueServiceRes(
       SUCCESS_TRUE,
       CODE_200,
@@ -64,14 +65,14 @@ export class ServiceResponse {
   }
   
 
-  polisSuccessAdded() {
+  polisSuccessAdded(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_TRUE,
       CODE_200,
       CLIENT_POLIS_SUCCESSFULLY_ADDED,
     );
   }
-  passwordMismatch() {
+  passwordMismatch(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
@@ -79,7 +80,7 @@ export class ServiceResponse {
     );
   }
 
-  polisAlreadyExists() {
+  polisAlreadyExists(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
@@ -87,7 +88,7 @@ export class ServiceResponse {
     );
   }
 
-  documnetsNotFound() {
+  documnetsNotFound(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
@@ -95,7 +96,7 @@ export class ServiceResponse {
     );
   }
 
-  documentsAddSuccessfully() {
+  documentsAddSuccessfully(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_TRUE,
       CODE_200,
@@ -103,7 +104,7 @@ export class ServiceResponse {
     );
   }
 
-  documentsAlreadyExists() {
+  documentsAlreadyExists(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
@@ -111,35 +112,35 @@ export class ServiceResponse {
     );
   }
   
-  userNotFound() {
+  userNotFound(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_404,
       USER_DOESNT_EXIST,
     );
   }
-  passwordSuccessUpdate() {
+  passwordSuccessUpdate(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_TRUE,
       CODE_200,
       USER_PASSWORD_SUCCESS,
     );
   }
-  userAlreadyExist() {
+  userAlreadyExist(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
       USER_ALREADY_EXIST,
     );
   }
-  userSuccessfulyCreated() {
+  userSuccessfulyCreated(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_TRUE,
       CODE_200,
       USER_SUCCESSFULLY_CREATED,
     );
   }
-  userNotAuthorisated() {
+  userNotAuthorisated(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_403,
@@ -147,7 +148,7 @@ export class ServiceResponse {
     );
   }
   
-  internalServerError() {
+  internalServerError(): TServiceResWithoutContent {
     return this.uniqueServiceErrorRes(
       SUCCESS_FALSE,
       CODE_500,

@@ -9,6 +9,7 @@ import { IUserDocumentsRepository } from 'application/ports/IUserDocumentsReposi
 import { PolisDMS } from 'domain/models/PolisDMS';
 import { User } from 'domain/models/User';
 import { GetUserModel } from 'domain/models/GetUserModel';
+import { TCheckPolisExist, TCheckUserDocument, TGetUserDocument } from 'infrastructure/types/TUser';
 
 @Injectable()
 export class UserDocumentsRepository extends BaseRepository<UserDocumentsModels>
@@ -28,7 +29,7 @@ export class UserDocumentsRepository extends BaseRepository<UserDocumentsModels>
     return result;
   }
 
-  async checkUserDocument(entity: UserDocumentsModels) {
+  async checkUserDocument(entity: UserDocumentsModels): Promise<TCheckUserDocument> {
     const result = await this.connection.query(
       `SELECT id FROM user_documents WHERE user_id=(SELECT id FROM users WHERE email='${entity.email}');`,
     );
@@ -51,7 +52,7 @@ export class UserDocumentsRepository extends BaseRepository<UserDocumentsModels>
     return result;
   }
 
-  async checkPolisExist(entity: PolisDMS) {
+  async checkPolisExist(entity: PolisDMS): Promise<TCheckPolisExist> {
     const result = await this.connection.query(
       `SELECT id FROM user_polis_dms WHERE user_id=(SELECT id FROM users WHERE email='${entity.email}');`,
     );
@@ -61,7 +62,7 @@ export class UserDocumentsRepository extends BaseRepository<UserDocumentsModels>
     return result;
   }
 
-  async getUserDocument(entity: GetUserModel) {
+  async getUserDocument(entity: GetUserModel): Promise<TGetUserDocument> {
     const result = await this.connection.query(`SELECT
         uu.polis_oms,
         uu.snils,

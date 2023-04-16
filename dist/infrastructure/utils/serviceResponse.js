@@ -67,4 +67,4 @@ class ServiceResponse {
     }
 }
 exports.ServiceResponse = ServiceResponse;
-//# sourceMappingURL=ServiceResponse.js.map
+//# sourceMappingURL=serviceResponse.js.map

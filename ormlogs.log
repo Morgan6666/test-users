@@ -4894,3 +4894,36 @@ WHERE user_id = (SELECT id FROM users WHERE email='test@mail.ru');
 [2023-04-16T20:39:04.345Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
 [2023-04-16T20:39:04.347Z][QUERY]: COMMIT
 [2023-04-16T20:40:53.875Z][QUERY]: SELECT id FROM user_documents WHERE user_id=(SELECT id FROM users WHERE email='049494@mail.ru');
+[2023-04-16T20:49:30.528Z][QUERY]: SELECT * FROM current_schema()
+[2023-04-16T20:49:30.547Z][QUERY]: SELECT version();
+[2023-04-16T20:49:30.548Z][QUERY]: START TRANSACTION
+[2023-04-16T20:49:30.549Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2023-04-16T20:49:30.551Z][QUERY]: COMMIT
+[2023-04-16T21:18:53.781Z][QUERY]: SELECT * FROM current_schema()
+[2023-04-16T21:18:53.800Z][QUERY]: SELECT version();
+[2023-04-16T21:18:53.801Z][QUERY]: START TRANSACTION
+[2023-04-16T21:18:53.803Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2023-04-16T21:18:53.806Z][QUERY]: COMMIT
+[2023-04-16T21:19:16.684Z][QUERY]: SELECT id,email,password FROM users WHERE email='04948894@mail.ru';
+[2023-04-16T21:19:16.733Z][QUERY]: INSERT INTO users(
+      first_name,
+      last_name,
+      email,
+      password)
+
+    VALUES('Test','irunhgbg', '04948894@mail.ru', '$2b$10$w3w2a9SqZV63xa/ZWajH6.ph8iQj.RedsQRpVlkLUVYBcpUyQZbFm') RETURNING id;
+[2023-04-16T21:36:47.507Z][QUERY]: SELECT * FROM current_schema()
+[2023-04-16T21:36:47.529Z][QUERY]: SELECT version();
+[2023-04-16T21:36:47.531Z][QUERY]: START TRANSACTION
+[2023-04-16T21:36:47.532Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'typeorm_metadata'
+[2023-04-16T21:36:47.534Z][QUERY]: COMMIT
+[2023-04-16T21:37:00.142Z][QUERY]: SELECT id,email,password FROM users WHERE email='049488945005@mail.ru';
+[2023-04-16T21:37:00.189Z][QUERY]: INSERT INTO users(
+      first_name,
+      last_name,
+      email,
+      password)
+
+    VALUES('Test','iru585nhgbg', '049488945005@mail.ru', '$2b$10$L0mxX/UUu.OeBZ6aBY/8bu0ik.Em4zgBtLAFp2nDbLgdcHz1.2CTG') RETURNING id;
+[2023-04-16T21:37:30.683Z][QUERY]: SELECT id,email,password FROM users WHERE email='049488945005@mail.ru';
+[2023-04-16T21:38:08.682Z][QUERY]: SELECT first_name,last_name,email FROM users WHERE email='049488945005@mail.ru';

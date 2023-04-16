@@ -43,7 +43,7 @@ exports.UsersUseCases = void 0;
 const common_1 = require("@nestjs/common");
 const IUsersRepository_1 = require("../ports/IUsersRepository");
 const UserExceptions_1 = require("../../domain/exceptions/UserExceptions");
-const ServiceResponse_1 = require("../../infrastructure/utils/ServiceResponse");
+const serviceResponse_1 = require("../../infrastructure/utils/serviceResponse");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt = __importStar(require("bcrypt"));
 const secretsConstant_1 = require("../../infrastructure/utils/secretsConstant");
@@ -56,7 +56,7 @@ let UsersUseCases = UsersUseCases_1 = class UsersUseCases {
         this.redis = redis;
         this.logger = new common_1.Logger(UsersUseCases_1.name);
         this.userException = new UserExceptions_1.UserExceptions();
-        this.serviceRes = new ServiceResponse_1.ServiceResponse();
+        this.serviceRes = new serviceResponse_1.ServiceResponse();
     }
     async calculateTokens(user) {
         const access_token = await this.jwtService.signAsync(user, {

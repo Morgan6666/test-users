@@ -6,7 +6,7 @@ import { ChangePasswordModel } from 'domain/models/ChangePasswordModel';
 import { GetUserModel } from 'domain/models/GetUserModel';
 import { Login } from 'domain/models/Login';
 import { User } from 'domain/models/User';
-import { ServiceResponse } from 'infrastructure/utils/ServiceResponse';
+import { ServiceResponse } from 'infrastructure/utils/serviceResponse';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { salt } from 'infrastructure/utils/secretsConstant';
@@ -14,6 +14,8 @@ import { ConfigService } from '@nestjs/config';
 import { JwtTokenModel } from 'domain/models/JwtToken';
 import Redis from 'ioredis';
 import { InjectRedis, RedisModule } from '@liaoliaots/nestjs-redis';
+import { TServiceRes, TServiceResWithoutContent } from 'infrastructure/types/TServiceRes';
+import { TTokens } from 'infrastructure/types/TTokens';
 
 @Injectable()
 export class UsersUseCases {
@@ -28,7 +30,7 @@ export class UsersUseCases {
   ) {}
 
  
-  async calculateTokens(user: JwtTokenModel) {
+  async calculateTokens(user: JwtTokenModel): Promise<TTokens> {
     const access_token: string = await this.jwtService.signAsync(user, {
       expiresIn: '15m',
     });
@@ -38,7 +40,7 @@ export class UsersUseCases {
     return { access_token, refresh_token };
   }
 
-  async sign(user: User, user_agent: string) {
+  async sign(user: User, user_agent: string): Promise<TServiceRes | TServiceResWithoutContent> {
     const checkUser = await this.usersRepository.getUser(user);
     this.logger.log(`Check if user exiss:${checkUser}`);
     if (!checkUser) {
@@ -55,13 +57,13 @@ export class UsersUseCases {
     }
   }
 
-  async login(user: Login) {
+  async login(user: Login): Promise<TServiceRes | TServiceResWithoutContent> {
     const checkUser = await this.usersRepository.getUser(user);
     if (!checkUser) {
       this.logger.warn(`Пользователь не найден:${user.email}`);
       return this.serviceRes.userNotFound();
     } else {
-      const isMatch = await bcrypt.compare(user.password, checkUser.password);
+      const isMatch: boolean = await bcrypt.compare(user.password, checkUser.password);
       if (isMatch) {
         this.logger.log(`Пользователь ${user.email} вошёл в систему`);
         const tokens = await this.calculateTokens(checkUser);
@@ -74,7 +76,7 @@ export class UsersUseCases {
   }
  
 
-  async logout(user_agent: string) {
+  async logout(user_agent: string): Promise<TServiceRes | TServiceResWithoutContent> {
     this.logger.log('Проверяем наличие сессии пользователя в redis');
     const checkTokenRedis = await this.redis.get(user_agent);
     if (checkTokenRedis) {
@@ -89,7 +91,7 @@ export class UsersUseCases {
 
  
 
-  async getUserByEmai(user: GetUserModel) {
+  async getUserByEmai(user: GetUserModel): Promise<TServiceRes | TServiceResWithoutContent> {
     this.logger.log('GetUser by email');
     const result = await this.usersRepository.getUserByEmail(user);
     if (!result) {
@@ -101,7 +103,7 @@ export class UsersUseCases {
     }
   }
 
-  async changePassword(user: ChangePasswordModel) {
+  async changePassword(user: ChangePasswordModel): Promise<TServiceRes | TServiceResWithoutContent> {
     const checkUser = await this.usersRepository.getUser(user);
     this.logger.log(`Пользователь(-смена пароля-):${checkUser}`);
     if (checkUser != null) {
@@ -123,13 +125,12 @@ export class UsersUseCases {
       return this.serviceRes.userNotFound();
 
     }
-    
   }
 
 
 
 
-  async updateAccessToken(token: string) {
+  async updateAccessToken(token: string): Promise<TServiceRes | TServiceResWithoutContent> {
     const result = this.jwtService.decode(token);
     return this.serviceRes.uniqueSuccessRes({
       access_token: await this.jwtService.signAsync(
@@ -143,7 +144,7 @@ export class UsersUseCases {
   }
 
  
-  async getUserIdByEmail(entity: User) {
+  async getUserIdByEmail(entity: User): Promise<TServiceRes | TServiceResWithoutContent> {
     this.logger.log(`Получаем информацию о пользователе`);
     const result = await this.usersRepository.getUserIdByEmail(entity);
     if (!result) {

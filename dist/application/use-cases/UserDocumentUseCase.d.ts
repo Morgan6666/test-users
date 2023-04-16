@@ -2,25 +2,14 @@ import { IUserDocumentsRepository } from 'application/ports/IUserDocumentsReposi
 import { GetUserModel } from 'domain/models/GetUserModel';
 import { PolisDMS } from 'domain/models/PolisDMS';
 import { UserDocumentsModels } from 'domain/models/UserDocuments';
-import { ServiceResponse } from 'infrastructure/utils/ServiceResponse';
+import { TServiceRes, TServiceResWithoutContent } from 'infrastructure/types/TServiceRes';
+import { ServiceResponse } from 'infrastructure/utils/serviceResponse';
 export declare class UserDocumentsUsecase {
     private readonly userDocumentsRepo;
     private readonly logger;
     serviceRes: ServiceResponse;
     constructor(userDocumentsRepo: IUserDocumentsRepository);
-    addUserDocuments(doc: UserDocumentsModels): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    addUserPolis(pol: PolisDMS): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    getUserDocuments(user: GetUserModel): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
+    addUserDocuments(doc: UserDocumentsModels): Promise<TServiceRes | TServiceResWithoutContent>;
+    addUserPolis(pol: PolisDMS): Promise<TServiceRes | TServiceResWithoutContent>;
+    getUserDocuments(user: GetUserModel): Promise<TServiceRes | TServiceResWithoutContent>;
 }

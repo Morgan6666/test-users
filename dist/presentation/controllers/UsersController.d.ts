@@ -7,40 +7,11 @@ import { Request } from 'express';
 export declare class UsersController {
     private readonly usersUseCases;
     constructor(usersUseCases: UsersUseCases);
-    sign(createUser: CreateUserVM, request: Request): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    login(loginUser: UserLoginVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    userInfo(userInfo: GetUserVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    logout(request: Request): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    changePassword(userInfo: ChangePasswordVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
-    refresToken(request: Request): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-        Content: object;
-    }>;
-    getUserIdByEmail(data: GetUserVM): Promise<{
-        Success: boolean;
-        Message: string;
-        Code: number;
-    }>;
+    sign(createUser: CreateUserVM, request: Request): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    login(loginUser: UserLoginVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    userInfo(userInfo: GetUserVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    logout(request: Request): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    changePassword(userInfo: ChangePasswordVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    refresToken(request: Request): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
+    getUserIdByEmail(data: GetUserVM): Promise<import("../../infrastructure/types/TServiceRes").TServiceRes | import("../../infrastructure/types/TServiceRes").TServiceResWithoutContent>;
 }

@@ -27,7 +27,6 @@ let UsersRepository = class UsersRepository extends BaseRepository_1.BaseReposit
     }
     async getUser(entity) {
         const result = await this.connection.query(`SELECT id,email,password FROM users WHERE email='${entity.email}';`);
-        console.log(result);
         if (result.length == 0) {
             return null;
         }
