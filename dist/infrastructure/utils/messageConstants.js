@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EMPTY_CONTENT = exports.SUCCESS_TRUE = exports.SUCCESS_FALSE = exports.CODE_200 = exports.CODE_403 = exports.CODE_500 = exports.CODE_404 = exports.SUCCESS = exports.USER_SESSION_DELETE = exports.USER_SESSION_NOT_FOUND = exports.PATIENT_INFO_NOT_FOUND = exports.PASSWORD_MISMATCH = exports.CLIENT_POLIS_SUCCESSFULLY_ADDED = exports.CLIENT_POLIS_ALREADY_EXISTS = exports.DOCUMENTS_ALREADY_EXISTS = exports.DOCUMENTS_ERROR = exports.DOCUMENTS_NOT_FOUND = exports.DOCUMENTS_ADD_SUCCESSFULLY = exports.INTERNAL_SERVER_ERROR = exports.USER_NOT_AUTHORISATE = exports.USER_PASSWORD_SUCCESS = exports.USER_SUCCESSFULLY_CREATED = exports.USER_ALREADY_EXIST = exports.USER_DOESNT_EXIST = void 0;
+exports.USER_DOESNT_EXIST = 'User doesnt exist';
+exports.USER_ALREADY_EXIST = 'User already exist';
+exports.USER_SUCCESSFULLY_CREATED = 'User successfully created';
+exports.USER_PASSWORD_SUCCESS = 'Password successfully updated';
+exports.USER_NOT_AUTHORISATE = 'User not authorisate';
+exports.INTERNAL_SERVER_ERROR = 'Internal server error';
+exports.DOCUMENTS_ADD_SUCCESSFULLY = 'Documents add successfull';
+exports.DOCUMENTS_NOT_FOUND = 'Documents not found';
+exports.DOCUMENTS_ERROR = 'Something wants wrong in addDocuments';
+exports.DOCUMENTS_ALREADY_EXISTS = 'User document already exist';
+exports.CLIENT_POLIS_ALREADY_EXISTS = 'Client polis already exists';
+exports.CLIENT_POLIS_SUCCESSFULLY_ADDED = 'Client polis successfully added';
+exports.PASSWORD_MISMATCH = 'Password mismatch';
+exports.PATIENT_INFO_NOT_FOUND = 'Информация по пациенту не найдена';
+exports.USER_SESSION_NOT_FOUND = 'Сессия пользователя не найдена';
+exports.USER_SESSION_DELETE = 'Сессия пользователя успешно удалена';
+exports.SUCCESS = 'success';
+exports.CODE_404 = 404;
+exports.CODE_500 = 500;
+exports.CODE_403 = 403;
+exports.CODE_200 = 200;
+exports.SUCCESS_FALSE = false;
+exports.SUCCESS_TRUE = true;
+exports.EMPTY_CONTENT = {};
+//# sourceMappingURL=messageConstants.js.map
