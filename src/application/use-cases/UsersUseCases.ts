@@ -29,10 +29,10 @@ export class UsersUseCases {
 
  
   async calculateTokens(user: JwtTokenModel) {
-    const access_token = await this.jwtService.signAsync(user, {
+    const access_token: string = await this.jwtService.signAsync(user, {
       expiresIn: '15m',
     });
-    const refresh_token = await this.jwtService.signAsync(user, {
+    const refresh_token: string = await this.jwtService.signAsync(user, {
       expiresIn: '7d',
     });
     return { access_token, refresh_token };
@@ -65,9 +65,7 @@ export class UsersUseCases {
       if (isMatch) {
         this.logger.log(`Пользователь ${user.email} вошёл в систему`);
         const tokens = await this.calculateTokens(checkUser);
-        return this.serviceRes.uniqueSuccessRes({
-          access_token: tokens.access_token,
-        });
+        return this.serviceRes.uniqueSuccessRes(tokens);
       } else {
         this.logger.log('Пароли не совпадают');
         return this.serviceRes.passwordMismatch();
@@ -115,10 +113,17 @@ export class UsersUseCases {
         const result = await this.usersRepository.changePasswordUser(user);
         return this.serviceRes.passwordSuccessUpdate();
       }
-    } else {
+     else {
       this.logger.log(`Пользователь ${user.email} не найден`);
       return this.serviceRes.passwordMismatch();
     }
+  }
+    else{
+      this.logger.log('Пользователь не найден');
+      return this.serviceRes.userNotFound();
+
+    }
+    
   }
 
 

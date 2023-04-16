@@ -15,12 +15,7 @@ const class_validator_1 = require("class-validator");
 const ChangePasswordModel_1 = require("../../../domain/models/ChangePasswordModel");
 class ChangePasswordVM {
     static fromViewModel(vm) {
-        if (vm.category != 'undefined') {
-            return new ChangePasswordModel_1.ChangePasswordModel(vm.email, vm.password, vm.newPassword, vm.category);
-        }
-        else {
-            return new ChangePasswordModel_1.ChangePasswordModel(vm.email, vm.password, vm.newPassword);
-        }
+        return new ChangePasswordModel_1.ChangePasswordModel(vm.email, vm.password, vm.newPassword);
     }
 }
 __decorate([
@@ -28,8 +23,8 @@ __decorate([
     (0, class_validator_1.IsEmail)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'Email',
-        example: 'db@mail.ru',
+        description: "Email",
+        example: "049494@mail.ru",
     }),
     __metadata("design:type", String)
 ], ChangePasswordVM.prototype, "email", void 0);
@@ -37,8 +32,8 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'User password',
-        example: 'huy1234',
+        description: "User password",
+        example: "jjjjjj",
     }),
     __metadata("design:type", String)
 ], ChangePasswordVM.prototype, "password", void 0);
@@ -46,8 +41,8 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'New password',
-        example: 'huy123',
+        description: "New password",
+        example: "testazazazza",
     }),
     __metadata("design:type", Object)
 ], ChangePasswordVM.prototype, "newPassword", void 0);

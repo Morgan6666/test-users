@@ -5,17 +5,14 @@ export class ChangePasswordModel implements IEntity {
   email: string;
   password: string;
   newPassword: string;
-  category?: string;
 
   constructor(
     email: string,
     password: string,
     newPassword: string,
-    category?: string,
   ) {
     (this.email = email),
       (this.password = password),
-      (this.category = category);
     this.newPassword = newPassword;
   }
   equals(entity: IEntity): boolean {

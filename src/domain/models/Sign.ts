@@ -9,15 +9,14 @@ export class Sign implements IEntity {
     lastName: string;
     firtsName: string;
     password: string;
-    category?: string
     
-    constructor( email: string, firtsName: string, lastName: string, password: string, category?: string) {
+    constructor( email: string, firtsName: string, lastName: string, password: string) {
         
         this.email = email;
         this.firtsName = firtsName;
         this.lastName = lastName;
-        this.password = password
-        this.category = category
+        this.password = password;
+        
     }
 
     equals(entity: IEntity) {

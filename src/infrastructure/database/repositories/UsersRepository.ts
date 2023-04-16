@@ -7,8 +7,6 @@ import { User } from 'domain/models/User';
 import { UserEntity } from 'infrastructure/database/mapper/UserEntity';
 
 import { BaseRepository } from './BaseRepository';
-import { Login } from 'domain/models/Login';
-import { UserMeta } from 'domain/models/UserMeta';
 import { GetUserModel } from 'domain/models/GetUserModel';
 import { ChangePasswordModel } from 'domain/models/ChangePasswordModel';
 

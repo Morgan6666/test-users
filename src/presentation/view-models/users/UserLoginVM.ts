@@ -21,15 +21,9 @@ export class UserLoginVM {
   })
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty({
-    description: 'User category',
-    example: 'doctor or user',
-  })
-  category?: string;
+  
 
   static fromViewModel(vm: UserLoginVM): Login {
-    return new Login(vm.email, vm.password, vm.category);
+    return new Login(vm.email, vm.password);
   }
 }

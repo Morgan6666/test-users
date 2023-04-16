@@ -13,8 +13,6 @@ export class User implements IEntity {
     lastName?: string,
     email?: string,
     password?: string,
-    category?: string,
-    profession?: string,
     user_id?: number,
   ) {
     this.firstName = firstName;

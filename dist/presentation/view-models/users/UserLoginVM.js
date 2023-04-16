@@ -15,7 +15,7 @@ const class_validator_1 = require("class-validator");
 const Login_1 = require("../../../domain/models/Login");
 class UserLoginVM {
     static fromViewModel(vm) {
-        return new Login_1.Login(vm.email, vm.password, vm.category);
+        return new Login_1.Login(vm.email, vm.password);
     }
 }
 __decorate([
@@ -37,14 +37,5 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UserLoginVM.prototype, "password", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({
-        description: 'User category',
-        example: 'doctor or user',
-    }),
-    __metadata("design:type", String)
-], UserLoginVM.prototype, "category", void 0);
 exports.UserLoginVM = UserLoginVM;
 //# sourceMappingURL=UserLoginVM.js.map

@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Login = void 0;
 class Login {
-    constructor(email, password, category, id) {
+    constructor(email, password, id) {
         this.email = email;
         this.password = password;
-        this.category = category;
         this.id = id;
     }
     equals(entity) {

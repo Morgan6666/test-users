@@ -4,7 +4,6 @@ export declare class Sign implements IEntity {
     lastName: string;
     firtsName: string;
     password: string;
-    category?: string;
-    constructor(email: string, firtsName: string, lastName: string, password: string, category?: string);
+    constructor(email: string, firtsName: string, lastName: string, password: string);
     equals(entity: IEntity): any;
 }

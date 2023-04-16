@@ -3,7 +3,6 @@ export declare class Login implements IEntity {
     id?: number;
     email: string;
     password: string;
-    category?: string;
-    constructor(email: string, password: string, category?: string, id?: number);
+    constructor(email: string, password: string, id?: number);
     equals(entity: IEntity): any;
 }

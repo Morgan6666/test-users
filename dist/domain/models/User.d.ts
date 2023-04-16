@@ -5,6 +5,6 @@ export declare class User implements IEntity {
     email: string;
     password?: string;
     user_id?: number;
-    constructor(firstName?: string, lastName?: string, email?: string, password?: string, category?: string, profession?: string, user_id?: number);
+    constructor(firstName?: string, lastName?: string, email?: string, password?: string, user_id?: number);
     equals(entity: IEntity): any;
 }

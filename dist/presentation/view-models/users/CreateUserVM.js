@@ -15,20 +15,15 @@ const class_validator_1 = require("class-validator");
 const User_1 = require("../../../domain/models/User");
 class CreateUserVM {
     static fromViewModel(vm) {
-        if (vm.profession != 'undefined') {
-            return new User_1.User(vm.firstName, vm.lastName, vm.email, vm.password, vm.category, vm.profession);
-        }
-        else {
-            return new User_1.User(vm.firstName, vm.lastName, vm.email, vm.password, vm.category);
-        }
+        return new User_1.User(vm.firstName, vm.lastName, vm.email, vm.password);
     }
 }
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'The name of the user',
-        example: 'John Doe',
+        description: "The name of the user",
+        example: "John Doe",
     }),
     __metadata("design:type", String)
 ], CreateUserVM.prototype, "firstName", void 0);
@@ -37,8 +32,8 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsEmail)(),
     (0, swagger_1.ApiProperty)({
-        description: 'The unique email of the user',
-        example: 'john.doe@gmail.com',
+        description: "The unique email of the user",
+        example: "john.doe@gmail.com",
     }),
     __metadata("design:type", String)
 ], CreateUserVM.prototype, "email", void 0);
@@ -46,8 +41,8 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'Last name of the user',
-        example: 'Snow',
+        description: "Last name of the user",
+        example: "Snow",
     }),
     __metadata("design:type", String)
 ], CreateUserVM.prototype, "lastName", void 0);
@@ -55,19 +50,10 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
-        description: 'User password',
-        example: 'kfngjbngjbngjnbgjbg',
+        description: "User password",
+        example: "kfngjbngjbngjnbgjbg",
     }),
     __metadata("design:type", String)
 ], CreateUserVM.prototype, "password", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({
-        description: 'Category',
-        example: 'Doctor',
-    }),
-    __metadata("design:type", String)
-], CreateUserVM.prototype, "category", void 0);
 exports.CreateUserVM = CreateUserVM;
 //# sourceMappingURL=CreateUserVM.js.map

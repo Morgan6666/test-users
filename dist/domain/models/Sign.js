@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sign = void 0;
 class Sign {
-    constructor(email, firtsName, lastName, password, category) {
+    constructor(email, firtsName, lastName, password) {
         this.email = email;
         this.firtsName = firtsName;
         this.lastName = lastName;
         this.password = password;
-        this.category = category;
     }
     equals(entity) {
         if (!(entity instanceof Sign))

@@ -95,9 +95,7 @@ let UsersUseCases = UsersUseCases_1 = class UsersUseCases {
             if (isMatch) {
                 this.logger.log(`Пользователь ${user.email} вошёл в систему`);
                 const tokens = await this.calculateTokens(checkUser);
-                return this.serviceRes.uniqueSuccessRes({
-                    access_token: tokens.access_token,
-                });
+                return this.serviceRes.uniqueSuccessRes(tokens);
             }
             else {
                 this.logger.log('Пароли не совпадают');
@@ -141,10 +139,14 @@ let UsersUseCases = UsersUseCases_1 = class UsersUseCases {
                 const result = await this.usersRepository.changePasswordUser(user);
                 return this.serviceRes.passwordSuccessUpdate();
             }
+            else {
+                this.logger.log(`Пользователь ${user.email} не найден`);
+                return this.serviceRes.passwordMismatch();
+            }
         }
         else {
-            this.logger.log(`Пользователь ${user.email} не найден`);
-            return this.serviceRes.passwordMismatch();
+            this.logger.log('Пользователь не найден');
+            return this.serviceRes.userNotFound();
         }
     }
     async updateAccessToken(token) {

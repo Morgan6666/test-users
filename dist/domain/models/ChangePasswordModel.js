@@ -2,11 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChangePasswordModel = void 0;
 class ChangePasswordModel {
-    constructor(email, password, newPassword, category) {
+    constructor(email, password, newPassword) {
         (this.email = email),
             (this.password = password),
-            (this.category = category);
-        this.newPassword = newPassword;
+            this.newPassword = newPassword;
     }
     equals(entity) {
         if (!(entity instanceof ChangePasswordModel))
