@@ -140,12 +140,12 @@ export class UsersUseCases {
  
   async getUserIdByEmail(entity: User) {
     this.logger.log(`Получаем информацию о пользователе`);
-    this.logger.log('Пользователь существует');
     const result = await this.usersRepository.getUserIdByEmail(entity);
     if (!result) {
       this.logger.warn(`Пользователь не найден`);
       return this.serviceRes.userNotFound();
     }
+    this.logger.log('Информация о пользователе найдена')
     return this.serviceRes.uniqueSuccessRes(result);
   }
 }
